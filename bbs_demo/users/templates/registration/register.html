@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+{% extends "bbs/base.html" %}
+
+{% block content %}
+    <div class="content-box">
+        {% if form.erors %}
+            <p>请输入正确的用户名或密码！</p>
+        {% endif %}
+
+        <form action="{% url 'users:register' %}" method="post">
+            {% csrf_token %}
+            <div class="register-box">
+                <span>bbs_demo</span>
+                <span>注册</span>
+                <div class="username-input">
+                    <label for="id_username">
+                        <input type="text" name="username" maxlength="20" autocomplete="username" required="" id="id_username" placeholder="请输入用户名">
+                    </label>
+                </div>
+                <div class="password-input">
+                    <label for="id_password1">
+                        <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" placeholder="请输入密码">
+                    </label>
+                </div>
+                <div class="password-input">
+                    <label for="id_password2">
+                        <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" placeholder="请再次输入密码">
+                    </label>
+                </div>
+                <button class="login-btn" name="submit">注 册</button>
+                <input type="hidden" name="text" value="{% url 'bbs:index' %}"/>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+</body>
+</html>

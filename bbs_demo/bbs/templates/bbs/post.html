@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/img/bbs_demo_icon.ico"/>
+    <title>发表帖子</title>
+</head>
+<body>
+{% extends "bbs/base.html" %}
+
+{% block content %}
+    <div class="content-box">
+        <div class="page-head">
+            <a class="plate-page" href="{% url 'bbs:plate' plate.id 1 %}">{{ plate.text }}</a>
+        </div>
+        <!--发帖输入-->
+        <form action="{% url 'bbs:post' plate.id %}" method="post">
+            {% csrf_token %}
+            <div class="post-box">
+                <div class="post-head"><span>发表帖子</span></div>
+                <div class="post-title">
+                    <label for="id_title">
+                        <input type="text" name="title" id="title" placeholder="标题"/>
+                    </label>
+                </div>
+                <div class="post-text">
+                    <label for="id_text">
+                        <textarea name="text" id="text"></textarea>
+                    </label>
+                </div>
+                <button class="post-btn" name="submit">提交</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+</body>
+</html>

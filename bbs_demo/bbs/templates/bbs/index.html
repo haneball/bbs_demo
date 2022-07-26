@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/img/bbs_demo_icon.ico"/>
+    <title>bbs_demo</title>
+</head>
+<body>
+{% extends "bbs/base.html" %}
+
+{% block content %}
+    <div class="content-box">
+        <ul class="plate-list">
+            <h1>bbs_demo</h1>
+            {% for plate in plates %}
+                <li>
+                    <span>{{ plate.id }}</span>
+                    <b><a href="{% url 'bbs:plate' plate.id 1 %}">{{ plate }}</a></b>
+                </li>
+            {% empty %}
+                <li>暂无版面</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}
+</body>
+</html>

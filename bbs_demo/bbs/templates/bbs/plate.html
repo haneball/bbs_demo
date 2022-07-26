@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/img/bbs_demo_icon.ico"/>
+    <title>板块</title>
+</head>
+<body>
+{% extends "bbs/base.html" %}
+
+{% block content %}
+    <div class="content-box">
+        <div class="page-head">
+            <a class="plate-page" href="{% url 'bbs:plate' plate.id 1 %}">{{ plate.text }}</a>
+            <a class="post-page" href="{% url 'bbs:post' plate.id %}">发表帖子 &raquo</a>
+        </div>
+
+        <div class="content-list">
+            {% for article in articles %}
+                <div class="content-card">
+                    <div class="card-head">
+                        <span>{{ article.owner.username }}</span>
+                        <small>{{ article.date_added|date:'M d, Y H:i' }}</small>
+                    </div>
+                    <div class="card-body">
+                        <b><a class="article-link" href="{% url 'bbs:article' article.id 1 %}">{{ article.title }}</a></b>
+                        <span>{{ article }}</span>
+                    </div>
+                </div>
+            {% empty %}
+                <p>暂无更多内容</p>
+            {% endfor %}
+        </div>
+
+        {% if previous_page > 0 %}
+            <div class="turn-page">
+                <ul>
+                    {% if present_page != 1 %}
+                        <li class="previous-page"><a href="{% url 'bbs:plate' plate.id previous_page %}">上一页</a></li>
+                    {% endif %}
+                    {% for page in page_range %}
+                        {% if page == present_page %}
+                            <li><a class="active" href="{% url 'bbs:plate' plate.id page %}">{{ page }}</a> </li>
+                        {% else %}
+                            <li><a href="{% url 'bbs:plate' plate.id page %}">{{ page }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li><a href="{% url 'bbs:plate' plate.id next_page %}">下一页</a></li>
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="refresh-btn">
+        <a href="{% url 'bbs:plate' plate.id present_page %}">刷新</a>
+    </div>
+
+{% endblock content %}
+</body>
+</html>

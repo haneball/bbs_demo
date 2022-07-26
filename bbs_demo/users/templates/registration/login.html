@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+{% extends "bbs/base.html" %}
+
+{% block content %}
+    <div class="content-box">
+        {% if form.erors %}
+        <p>请输入正确的用户名或密码！</p>
+        {% endif %}
+
+        <form action="{% url 'users:login' %}" method="post">
+            {% csrf_token %}
+            <div class="login-box">
+                <span>bbs_demo</span>
+                <span>登录</span>
+                <div class="username-input">
+                    <label for="id_username">
+                        <input type="text" name="username" maxlength="20" id="id_username" autocomplete="username" required="" placeholder="请输入用户名"/>
+                    </label>
+                </div>
+                <div class="password-input">
+                    <label for="id_password">
+                        <input type="password" name="password" id="id_password" required="" autocomplete="password" placeholder="请输入密码"/>
+                    </label>
+                </div>
+                <button class="login-btn" name="submit">登 录</button>
+                <input type="hidden" name="text" value="{% url 'bbs:index' %}"/>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/img/bbs_demo_icon.ico"/>
+    <title>发表回复</title>
+</head>
+<body>
+{% extends "bbs/base.html" %}
+
+{% block content %}
+    <div class="content-box">
+        <div class="page-head">
+            <a class="plate-page" href="{% url 'bbs:plate' article.plate.id 1 %}">{{ article.plate.text }}</a>
+        </div>
+        <!--回复输入-->
+        <form action="{% url 'bbs:reply' article.id %}" method="post">
+            {% csrf_token %}
+            <div class="reply-box">
+                <div class="reply-head">
+                    <a href="{% url 'bbs:article' article.id 1 %}">{{ article.title }}</a>
+                </div>
+                <div class="reply-text">
+                    <label for="id_text">
+                        <textarea name="text" id="text"></textarea>
+                    </label>
+                </div>
+                <button class="reply-btn" name="submit">回复</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+</body>
+</html>

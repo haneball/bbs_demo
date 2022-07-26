@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>退出登录</title>
+</head>
+<body>
+{% extends "bbs/base.html" %}
+
+{% block content %}
+    <div class="content-box">
+        <p style="text-align: center; font-size: 22px">已退出登录...</p>
+        <a class="back-btn" href="{% url 'bbs:index' %}">返回主页 &raquo</a>
+    </div>
+{% endblock content %}
+</body>
+</html>

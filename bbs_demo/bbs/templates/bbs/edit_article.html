@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/img/bbs_demo_icon.ico"/>
+    <title>编辑帖子</title>
+</head>
+<body>
+{% extends "bbs/base.html" %}
+{% block content %}
+    <div class="content-box">
+        <div class="page-head">
+            <a class="plate-page" href="{% url 'bbs:plate' article.plate.id 1 %}">{{ article.plate.text }}</a>
+        </div>
+
+        <form action="{% url 'bbs:edit_article' article.id %}" method="post">
+            {% csrf_token %}
+            <div class="post-box">
+                <div class="post-head"><span>编辑帖子</span></div>
+                <div class="post-title">
+                    <label for="id_title">
+                        <input type="text" name="title" id="title" value={{ article.title }} placeholder="标题"/>
+                    </label>
+                </div>
+                <div class="post-text">
+                    <label for="id_text">
+                        <textarea name="text" id="text">{{ article.text }}</textarea>
+                    </label>
+                </div>
+                <button class="post-btn" name="submit">提交</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+</body>
+</html>

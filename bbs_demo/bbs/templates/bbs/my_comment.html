@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/img/bbs_demo_icon.ico"/>
+    <title>我的回复</title>
+</head>
+<body>
+{% extends 'bbs/base.html' %}
+
+{% block content %}
+    <div class="content-box">
+        <div class="option-tab">
+            <a href="{% url 'bbs:my_article' %}">我的发帖</a>
+            <a class="active" href="{% url 'bbs:my_comment' %}">我的回复</a>
+        </div>
+
+        <div class="content-list">
+            {% for comment in comments %}
+                <div class="content-card">
+                    <div class="card-head">
+                        <small>{{ comment.date_added|date:'M d, Y H:i' }}</small>
+                    </div>
+                    <div class="card-body">
+                        <b><a class="article-link" href="{% url 'bbs:article' comment.article.id 1 %}">{{ comment.article.title }}</a></b>
+                        <span>回复: {{ comment.text }}</span><br/>
+                    </div>
+                    <div class="operate">
+                        <a href="{% url 'bbs:edit_comment' comment.id %}">编辑</a>
+                        <a href="{% url 'bbs:delete_comment' comment.id %}">删除</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>暂无更多内容</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+</body>
+</html>

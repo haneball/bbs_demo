@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/img/bbs_demo_icon.ico"/>
+    <title>帖子详情</title>
+</head>
+<body>
+{% extends "bbs/base.html" %}
+
+{% block content %}
+    <div class="content-box">
+        <div class="page-head">
+            <a class="plate-page" href="{% url 'bbs:plate' article.plate.id 1 %}">{{ article.plate.text }}</a>
+            <a class="reply-page" href="{% url 'bbs:reply' article.id %}">发表回复 &raquo</a>
+        </div>
+        <!--主贴内容-->
+        <div class="article-box">
+            <div class="article-title">
+                <p>{{ article.title }}</p>
+            </div>
+            {% if present_page == 1 %}
+                <div class="article-content">
+                    <div class="user-info">
+                        <p class="username">{{ article.owner.username }}</p>
+                    </div>
+                    <div class="article-text">
+                        <span>{{ article.text }}</span><br/>
+                        <span>{{ article.date_added|date:'M d, Y H:i' }}</span>
+                    </div>
+                </div>
+            {% endif %}
+        <!--回复内容-->
+        <div class="comment-list" style="clear: both">
+            {% for comment in comments %}
+                <div class="comment-content">
+                    <div class="user-info">
+                        <p class="username">{{ comment.owner.username }}</p>
+                    </div>
+                    <div class="comment-text">
+                        <span>{{ comment.text }}</span><br/>
+                        <span>{{ comment.date_added|date:'M d, Y H:i' }}</span>
+                    </div>
+                </div>
+            {% empty %}
+                <p>暂时还没有回复</p>
+            {% endfor %}
+        </div>
+        <!--分页器-->
+        {% if previous_page > 0 %}
+            <div class="turn-page">
+                <ul>
+                    {% if present_page != 1 %}
+                        <li class="previous-page"><a href="{% url 'bbs:article' article.id previous_page %}">上一页</a></li>
+                    {% endif %}
+                    {% for page in page_range %}
+                        {% if page == present_page %}
+                            <li><a class="active" href="{% url 'bbs:article' article.id page %}">{{ page }}</a> </li>
+                        {% else %}
+                            <li><a href="{% url 'bbs:article' article.id page %}">{{ page }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li><a href="{% url 'bbs:article' article.id next_page %}">下一页</a></li>
+                </ul>
+            </div>
+        {% endif %}
+        <!--快速回复-->
+        <div class="reply-box">
+            {% if user.is_authenticated %}
+                <form action="{% url 'bbs:article' article.id 1 %}" method="post">
+                    {% csrf_token %}
+                    <div class="quick-reply-head">
+                        <span>快速回复</span>
+                    </div>
+                    <div class="quick-reply-text">
+                        <label for="id_text">
+                            <textarea name="text" id="text"></textarea>
+                        </label>
+                    </div>
+                    <button class="reply-btn" name="submit">回复</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="refresh-btn">
+        <a href="{% url 'bbs:article' article.id present_page %}">刷新</a>
+    </div>
+    </div>
+{% endblock %}
+</body>
+</html>

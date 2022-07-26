@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bbs_style_sheet.css"/>
+</head>
+<body>
+<ul class="nav">
+    <li><a><b>bbs_demo</b></a></li>
+    <li><a href="{% url 'bbs:index' %}">首页</a> </li>
+    {% if user.is_authenticated %}
+        <li style="float: right"><a href="{% url 'users:logout' %}">退出登录</a> </li>
+        <li style="float: right">
+            <div class="dropdown">
+                <span>{{ user.username }}</span>
+                <div class="dropdown-content">
+                    <a href="{% url 'bbs:my_article' %}">我的发帖</a>
+                    <a href="{% url 'bbs:my_comment' %}">我的回复</a>
+                </div>
+            </div>
+        </li>
+    {% else %}
+        <li style="float: right"><a href="{% url 'users:register' %}">注册</a> </li>
+        <li style="float: right"><a href="{% url 'users:login' %}">登录</a> </li>
+    {% endif %}
+</ul><br/>
+{% block content %}{% endblock content %}
+</body>
+</html>

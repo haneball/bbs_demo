@@ -1,0 +1,444 @@
+/* 网页背景色 */
+body{
+    background-color: #f3f3f3;
+}
+/* 导航栏 */
+.nav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+.nav>li{
+    float: left;
+}
+.nav>li>a{
+    display: block;
+    color: #fff;
+    padding: 20px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+.nav>li>a:hover{
+    background-color: #555;
+}
+.dropdown{
+    display: inline-block;
+    color: #fff;
+    padding: 20px 16px;
+    text-align: center;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    top: 69px;
+    background-color: #f3f3f3;
+    min-width: 100px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 2;
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+.dropdown>span{
+    color: #fff;
+    padding: 20px 16px;
+    text-align: center;
+}
+.dropdown>span:hover{
+    background-color: #555;
+}
+.dropdown-content>a{
+    display: block;
+    color: #000;
+    padding: 10px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.dropdown-content>a:hover{
+    background-color: #e1e1e1;
+}
+/* 首页板块列表 */
+.plate-list{
+    display: inline-block;
+    list-style-type: none;
+}
+.plate-list li{
+    padding: 6px 0;
+    margin-bottom: 10px;
+}
+.plate-list li span{
+    padding: 6px 12px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #197edc;
+}
+.plate-list li a{
+    margin: 5px 0 12px 0;
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+}
+.plate-list li a:hover{
+    color: #1db0f4;
+}
+/* 板块页面头部 */
+.page-head, .option-tab{
+    width: 980px;
+    height: 78px;
+    margin: auto;
+}
+/* 板块跳转按钮 */
+.plate-page{
+    position: relative;
+    top: 30px;
+    left: 0;
+    margin: 10px 0;
+    padding: 14px 16px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    background-color: #197edc;
+}
+.plate-page:hover{
+    background-color: #1763b8;
+}
+/* 发帖, 回复跳转按钮 */
+.post-page, a.reply-page{
+    position: relative;
+    top: 30px;
+    left: 6px;
+    margin: 10px 0;
+    padding: 14px 16px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    background-color: #51a970;
+}
+.post-page:hover, a.reply-page:hover{
+    background-color: #408458;
+}
+/* 刷新页面按钮 */
+.refresh-btn a{
+    display: block;
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    width: 64px;
+    margin: 10px;
+    padding: 14px 0;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    background-color: #51a970;
+}
+.refresh-btn a:hover{
+    background-color: #408458;
+}
+/* 内容主体定位 */
+.content-box{
+    position: relative;
+    width: 980px;
+    height: auto;
+    margin: auto;
+}
+/* 板块主体 */
+.content-list{
+    clear: both;
+}
+.content-card{
+    list-style-type: none;
+    padding: 20px 18px;
+    overflow: auto;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #fff;
+}
+.article-card:last-child{
+    border-bottom: none;
+}
+.card-head{
+    margin: 0;
+}
+.card-head span{
+    margin-right: 6px;
+}
+.card-head small{
+    color: #999;
+}
+.card-body a.article-link{
+    display: block;
+    margin: 5px 0 5px 0;
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+}
+.card-body a.article-link:hover{
+    color: #1db0f4;
+}
+.card-body span{
+    color: #777;
+    font-size: 14px;
+}
+/* 帖子主体 */
+.article-box{
+    padding: 0;
+    background-color: #efefef;
+}
+.article-title{
+    position: relative;
+    left: 98px;
+    width: 858px;
+    padding: 5px 0 5px 24px;
+    background-color: #fff;
+}
+.article-title p{
+    font-size: 18px;
+    font-weight: bold;
+}
+.article-content{
+    position: relative;
+    min-height: 160px;
+}
+.user-info, .article-text{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+.user-info{
+    width: 98px;
+    left: 0;
+    border-top: 1px solid #d8d8d8;
+    border-right: 2px solid #e3e3e3;
+    background-color: #efefef;
+}
+.user-info p{
+    text-align: center;
+}
+.article-text, .comment-text{
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    width: 882px;
+    min-height: 160px;
+    left: 98px;
+    border-top: 1px solid #e3e3e3;
+    background-color: #fff;
+}
+.article-text span, .comment-text span{
+    padding: 14px 24px 0 24px;
+    margin: 0;
+    background-color: #fff;
+}
+.article-text span:last-child, .comment-text span:last-child{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 4px 0;
+    color: #999;
+}
+.comment-content{
+    position:relative;
+    min-height: 160px;
+}
+.comment-list{
+    padding: 0 0 2px 0;
+}
+.comment-list>p{
+    text-align: center;
+}
+/* 发帖, 回复的主体 */
+.post-head, .reply-head{
+    padding: 5px 0;
+    font-size: 18px;
+}
+.post-box, .reply-box{
+    position: relative;
+}
+.post-title input, .post-text textarea,.reply-text textarea, .quick-reply-text textarea{
+    width: 960px;
+    margin: auto;
+    border: 2px solid #e3e3e3;
+    outline: none;
+}
+.post-title input{
+    padding: 6px 8px;
+    text-align: left;
+}
+.post-text textarea, .reply-text textarea{
+    padding: 6px 8px 234px 8px;
+    resize: none;
+    overflow: auto;
+}
+.post-title input:focus{
+    border: 2px solid #51a970;
+}
+.post-text textarea:focus{
+    border: 2px solid #51a970;
+}
+.reply-head a{
+    color: #000;
+    text-decoration: none;
+}
+.reply-head a:hover{
+    color: #1db0f4;
+}
+.reply-text textarea:focus{
+    border: 2px solid #51a970;
+}
+.post-btn, .reply-btn, .back-btn{
+    position: absolute;
+    left: 0;
+    padding: 14px 16px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    background-color: #51a970;
+}
+.post-btn:hover, .reply-btn:hover, .back-btn:hover{
+    background-color: #408458;
+}
+.back-btn{
+    position: absolute;
+    left: 44.5%;
+}
+.quick-reply-head{
+    padding: 6px 8px;
+    margin-top: 46px;
+    border-top: 2px solid #e3e3e3;
+    background-color: #ebebeb;
+}
+.quick-reply-text textarea{
+    padding: 6px 8px 120px 8px;
+    resize: none;
+    overflow: auto;
+}
+.quick-reply-text textarea:focus{
+    border: 2px solid #51a970;
+}
+/* 翻页区域 */
+.turn-page{
+    padding: 4px 0;
+}
+.turn-page ul{
+    list-style-type: none;
+    padding: 5px 0;
+    margin: auto;
+}
+.turn-page ul li a{
+    display: block;
+    float: left;
+    color: #000;
+    padding: 8px 12px;
+    margin: 12px 6px 6px 0;
+    text-decoration: none;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.turn-page ul li a:hover{
+    border: 1px solid #51a970;
+}
+.turn-page ul li a.active{
+    color: #fff;
+    background-color: #51a970;
+}
+.turn-page ul li a.active:hover{
+    background-color: #408458;
+}
+.option-tab a{
+    position: relative;
+    top: 30px;
+    left: 0;
+    margin: 10px 0;
+    padding: 14px 16px;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+}
+/* 用户个人中心操作菜单 */
+.option-tab a:hover{
+    border: 1px solid #51a970;
+}
+.option-tab a.active{
+    color: #fff;
+    background-color: #51a970;
+}
+.option-tab a.active:hover{
+    background-color: #408458;
+}
+
+.operate{
+    float: right;
+}
+.operate a{
+    margin-right: 6px;
+    color: #000;
+    text-decoration: none;
+}
+.operate a:last-child{
+    margin-right: 0;
+}
+.operate a:hover{
+    color: #1db0f4;
+}
+/* 用户名输入 */
+.login-box, .register-box{
+    position: absolute;
+    left: 304px;
+    padding: 22px 36px 44px 36px;
+    margin-top: 120px;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.login-box span, .register-box span{
+    display: block;
+    float: left;
+    top: 16px;
+    color: #777;
+    font-size: 22px;
+}
+.login-box span:first-child, .register-box span:first-child{
+    font-weight: bold;
+    margin-right: 6px;
+    color: #000;
+}
+.username-input input, .password-input input{
+    width: 284px;
+    height: 36px;
+    padding: 2px 8px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    border: 2px solid #e3e3e3;
+    outline: none;
+    font-size: 16px;
+}
+.username-input input:focus, .password-input input:focus{
+    border: 2px solid #51a970;
+}
+.username-input input{
+    margin-top: 76px;
+}
+.login-btn{
+    width: 308px;
+    height: 40px;
+    margin-top: 16px;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #51a970;
+}
+.login-btn:hover{
+    background-color: #408458;
+}
